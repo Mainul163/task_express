@@ -40,7 +40,7 @@ app.use(
 
 // ****** menu route ******
 
-app.post("/menu", menuRouter);
+app.use("/menu", menuRouter);
 
 app.use((req, res, next) => {
   res.status(404).json({

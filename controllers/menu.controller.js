@@ -1,24 +1,19 @@
-const mongoose = require("mongoose");
-const menuSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, "name is required"],
-  },
+const Menu = require("../models/menu.model");
 
-  banglaLabel: {
-    type: String,
-    required: [true, "bangla label is required"],
-  },
+const createUser = async (req, res) => {
+  try {
+    const newMenu = new Menu({
+      name: req.body.name,
+      banglaLabel: req.body.banglaLabel,
+      englishLabel: req.body.englishLabel,
+      createdBy: req.body.username,
+    });
+    console.log(newMenu);
+    await newMenu.save();
+    res.status(201).json(newUser);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
 
-  englishLabel: {
-    type: String,
-    required: [true, "english label is required"],
-  },
-
-  createAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
-
-module.exports = mongoose.model("User", menuSchema);
+module.exports = { createUser };
