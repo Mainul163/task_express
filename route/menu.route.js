@@ -24,7 +24,12 @@ const passport = require("passport");
 const app = express();
 app.use(passport.initialize());
 require("../confiq/passport");
-const { createUser, getUser } = require("../controllers/menu.controller");
+const {
+  createUser,
+  getUser,
+  updateMenu,
+  deleteMenu,
+} = require("../controllers/menu.controller");
 const multer = require("multer");
 const path = require("path");
 const router = express.Router();
@@ -52,5 +57,8 @@ router.post(
   upload.single("image"),
   createUser
 );
+
 router.get("/", getUser);
+router.put("/:id", upload.single("image"), updateMenu);
+router.delete("/:id", deleteMenu);
 module.exports = router;
