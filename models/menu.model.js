@@ -18,6 +18,10 @@ const menuSchema = new mongoose.Schema({
     type: String,
     ref: "User",
   },
+  image: {
+    type: String,
+    required: [true, "image is required"],
+  },
   createAt: {
     type: Date,
     default: Date.now,
