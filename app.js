@@ -70,6 +70,7 @@ const registerRouter = require("./route/register.route");
 const loginRouter = require("./route/login.route");
 const profileRouter = require("./route/profile.route");
 const menuRouter = require("./route/menu.route");
+const subMenuRouter = require("./route/submenu.route");
 const bodyParser = require("body-parser");
 const path = require("path");
 require("./confiq/database");
@@ -116,6 +117,13 @@ app.use((req, res, next) => {
   });
 });
 
+// ****** submenu route ******
+app.use(
+  "/submenu/images",
+  express.static(path.join(__dirname, "submenu/images"))
+);
+
+app.use("/submenu", subMenuRouter);
 app.use((err, req, res, next) => {
   res.status(500).send("something broke !");
 });

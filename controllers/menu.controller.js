@@ -3,7 +3,6 @@ require("dotenv").config();
 const Menu = require("../models/menu.model");
 
 const createUser = async (req, res) => {
-  console.log(req.file);
   try {
     const demu = {
       name: req.body.name,
