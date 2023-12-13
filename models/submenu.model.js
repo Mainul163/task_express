@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const menuSchema = new mongoose.Schema({
+const submenuSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "name is required"],
@@ -14,12 +14,12 @@ const menuSchema = new mongoose.Schema({
     type: String,
     required: [true, "english label is required"],
   },
-  menuId: [
-    {
-      type: string,
-      required: [true, "menu id is required"],
-    },
-  ],
+
+  menuId: {
+    type: String,
+    required: [true, "image is required"],
+  },
+
   image: {
     type: String,
     required: [true, "image is required"],
@@ -30,4 +30,4 @@ const menuSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Menu", menuSchema);
+module.exports = mongoose.model("SubMenu", submenuSchema);

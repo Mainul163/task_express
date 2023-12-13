@@ -46,10 +46,8 @@ const getUser = async (req, res) => {
 // ************** update  menu ********************
 
 const updateMenu = async (req, res) => {
-  console.log(".........", req.file);
   try {
     const updateMenu = await Menu.findOne({ _id: req.params.id });
-    console.log("ddddddd", updateMenu);
 
     updateMenu.name = req.body.name;
     updateMenu.banglaLabel = req.body.banglaLabel;
