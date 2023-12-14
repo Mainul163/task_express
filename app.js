@@ -71,7 +71,7 @@ const loginRouter = require("./route/login.route");
 const profileRouter = require("./route/profile.route");
 const menuRouter = require("./route/menu.route");
 const subMenuRouter = require("./route/submenu.route");
-
+const imageRouter = require("./route/uploadImage.route");
 const bodyParser = require("body-parser");
 const path = require("path");
 require("./confiq/database");
@@ -114,15 +114,21 @@ app.use(
 );
 
 // ****** menu route ******
+
 app.use("/menu", menuRouter);
+
+// ****** iamge upload route ******
+app.use(
+  "/images/images",
+  express.static(path.join(__dirname, "images/images"))
+);
+app.use("/image", imageRouter);
 
 app.use((req, res, next) => {
   res.status(404).json({
     message: "route not found",
   });
 });
-
-// ****** submenu route ******
 
 app.use((err, req, res, next) => {
   res.status(500).send("something broke !");
